@@ -1,7 +1,10 @@
 package com.example.demo.Entity;
 
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.Setter;
+@Setter
+@Getter
 @Entity
 public class Bus {
     @Id
@@ -12,8 +15,9 @@ public class Bus {
     private Integer capacity;
 
     @Column(nullable = false)
-    private String department;
+    private String departure_platform;
 
+    @Setter
     @Column(nullable = false)
     private String features;
 
@@ -21,42 +25,9 @@ public class Bus {
     public Bus() {}
 
     // Parameterized constructor
-    public Bus(Integer capacity, String department, String features) {
+    public Bus(Integer capacity, String departure_platform, String features) {
         this.capacity = capacity;
-        this.department = department;
-        this.features = features;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getFeatures() {
-        return features;
-    }
-
-    public void setFeatures(String features) {
+        this.departure_platform = departure_platform;
         this.features = features;
     }
 }

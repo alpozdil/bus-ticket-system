@@ -1,11 +1,18 @@
 package com.example.demo.Entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.security.Timestamp;
+import java.util.Date;
 
+@Setter
+@Getter
 @Entity
 public class Payment {
+    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,14 +31,14 @@ public class Payment {
     private String creditCardCvv;
 
     @Column(nullable = false)
-    private Timestamp paymentTime;
+    private Date paymentTime;
 
     // getters and setters
     // Default constructor
     public Payment() {}
 
     // Parameterized constructor
-    public Payment(Ticket ticket, String creditCardNumber, String creditCardExpiry, String creditCardCvv, Timestamp paymentTime) {
+    public Payment(Ticket ticket, String creditCardNumber, String creditCardExpiry, String creditCardCvv, Date paymentTime) {
         this.ticket = ticket;
         this.creditCardNumber = creditCardNumber;
         this.creditCardExpiry = creditCardExpiry;
@@ -39,52 +46,4 @@ public class Payment {
         this.paymentTime = paymentTime;
     }
 
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-
-    public String getCreditCardNumber() {
-        return creditCardNumber;
-    }
-
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
-    }
-
-    public String getCreditCardExpiry() {
-        return creditCardExpiry;
-    }
-
-    public void setCreditCardExpiry(String creditCardExpiry) {
-        this.creditCardExpiry = creditCardExpiry;
-    }
-
-    public String getCreditCardCvv() {
-        return creditCardCvv;
-    }
-
-    public void setCreditCardCvv(String creditCardCvv) {
-        this.creditCardCvv = creditCardCvv;
-    }
-
-    public Timestamp getPaymentTime() {
-        return paymentTime;
-    }
-
-    public void setPaymentTime(Timestamp paymentTime) {
-        this.paymentTime = paymentTime;
-    }
 }
