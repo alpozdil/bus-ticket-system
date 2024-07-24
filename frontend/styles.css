@@ -1,0 +1,294 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #007BFF;
+    color: white;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.hero {
+    background: url(https://aicdn.picsart.com/37554dd7-a781-4859-91f5-702ae4dbcb31.png) no-repeat center center/cover;
+    color: white;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    background: #007BFF;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    opacity: 90%;
+    box-shadow: 5px 5px 10px 4px #000000;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-form input[type="text"],
+.search-form input[type="date"],
+.search-form button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-form button {
+    background: #ff7300;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background: #0056b3;
+}
+
+.trip-type {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.select-container {
+    display: flex;
+    gap: 10px; /* Adjust the gap between the select boxes as needed */
+}
+
+.select-box {
+    width: 200px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height if necessary */
+    padding: 5px; /* Optional padding for better appearance */
+    font-size: 16px; /* Font size for the text inside the select box */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 5px; /* Optional: Rounding the corners */
+}
+
+.highlights {
+    background-color: #f4f4f4; /* Light background for contrast */
+    color: #333; /* Dark text for readability */
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+}
+
+.highlight {
+    background: #ffffff; /* White background for each highlight */
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1 1 calc(25% - 20px); /* Four columns layout with space between */
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: center; /* Center text */
+    box-sizing: border-box; /* Include padding and border in the element’s total width and height */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
+}
+
+.highlight:hover {
+    transform: scale(1.05); /* Slightly scale up the box */
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.2); /* Increase shadow for hover effect */
+}
+
+.highlight h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.highlight p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background: #007bff; /* Blue background */
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px; /* Space above button */
+    text-align: center; /* Center text inside button */
+}
+
+.btn:hover {
+    background: #0056b3; /* Darker blue on hover */
+}
+
+.highlight-btn {
+    background: #007bff; /* Green background for the special button */
+}
+
+.highlight-btn:hover {
+    background: #0056b3; /* Darker green on hover */
+}
+
+@media (max-width: 1200px) {
+    .highlight {
+        flex: 1 1 calc(33.33% - 20px); /* Three columns layout with space between */
+    }
+}
+
+@media (max-width: 768px) {
+    .highlight {
+        flex: 1 1 100%; /* Single column layout on small screens */
+    }
+}
+
+
+.experience {
+    background-color: #f9f9f9; /* Light background for contrast */
+    color: #000000; /* Black text for readability */
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 0 20px; /* Add some padding on the sides */
+}
+
+.experience h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #000000; /* Black text for headings */
+}
+
+.experience h3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #000000; /* Black text for subheadings */
+}
+
+.experience p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .experience h2 {
+        font-size: 20px;
+    }
+
+    .experience h3 {
+        font-size: 18px;
+    }
+}
+
+.footer {
+    background-color: #0056b3; /* Dark background for the footer */
+    color: #fff; /* White text color */
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between sections */
+}
+
+.footer-section {
+    flex: 1 1 calc(25% - 20px); /* Four columns layout with space between */
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+}
+
+.social-media a {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        flex: 1 1 100%; /* Single column layout on small screens */
+    }
+}
