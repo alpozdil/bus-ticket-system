@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import Requests.TripRequestModel;
 import com.example.demo.Entity.Trip;
 import com.example.demo.Services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class TripController {
     @PostMapping
     public Trip createTrip(@RequestBody Trip trip) {
         return tripService.save(trip);
+    }
+
+    @PostMapping("/search")
+    public List<Trip> searchTrip(@RequestBody TripRequestModel tripRequest) {
+        return tripService.searchTrip(tripRequest);
     }
 
     @DeleteMapping("/{id}")

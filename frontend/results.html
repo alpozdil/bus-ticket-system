@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Results</title>
+    <link rel="stylesheet" href="results.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">BusTicket</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tickets">Tickets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div id="app">
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <form class="search-form" @submit.prevent="searchTrips">
+                <div class="trip-type">
+                    <label><input type="radio" name="trip" value="round-trip" v-model="tripType"> Round Trip</label>
+                    <label><input type="radio" name="trip" value="one-way" v-model="tripType"> One Way</label>
+                </div>
+                <div class="select-container">
+                    <label>
+                        <select class="select-box" v-model="fromCity" @change="fetchDestinations" required>
+                            <option value="">From</option>
+                            <option v-for="city in city" :key="city.id" :value="city.id">{{ city.name }}</option>
+                        </select>
+                    </label>
+                    <label>
+                        <select class="select-box" v-model="toCity" required>
+                            <option value="">To</option>
+                            <option v-for="city in destinations" :key="city.id" :value="city.id">{{ city.name }}</option>
+                        </select>
+                    </label>
+                </div>
+                <input type="date" v-model="departureDate" placeholder="Departure Date" required>
+                <input type="date" v-model="returnDate" placeholder="Return Date" v-if="tripType === 'round-trip'">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <div class="trip" v-for="trip in trips" :key="trip.id">
+                <h3>{{ trip.fromCity }} to {{ trip.toCity }}</h3>
+                <p>Departure: {{ trip.departureDate }} | Return: {{ trip.returnDate }}</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            city: [],
+            fromCity: '',
+            toCity: '',
+            destinations: [],
+            tripType: 'round-trip',
+            departureDate: '',
+            returnDate: '',
+            trips: []
+        },
+        created() {
+            this.getAllCities();
+            this.fetchTripsFromQuery();
+        },
+        methods: {
+            getAllCities() {
+                axios.get('http://localhost:8080/api/cities')
+                    .then(response => {
+                        this.city = response.data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching cities:', error);
+                    });
+            },
+            fetchDestinations() {
+                if (this.fromCity) {
+                    axios.get(`http://localhost:8080/api/routes/destinations/${this.fromCity}`)
+                        .then(response => {
+                            this.destinations = response.data;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching destinations:', error);
+                        });
+                } else {
+                    this.destinations = [];
+                }
+            },
+            searchTrips() {
+                const params = {
+                    fromCity: this.fromCity,
+                    toCity: this.toCity,
+                    tripType: this.tripType,
+                    departureDate: this.departureDate,
+                    returnDate: this.returnDate
+                };
+                axios.get('http://localhost:8080/api/trips/search', { params })
+                    .then(response => {
+                        this.trips = response.data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching trips:', error);
+                    });
+            },
+            fetchTripsFromQuery() {
+                const urlParams = new URLSearchParams(window.location.search);
+                this.fromCity = urlParams.get('fromCity') || '';
+                this.toCity = urlParams.get('toCity') || '';
+                this.tripType = urlParams.get('trip') || 'round-trip';
+                this.departureDate = urlParams.get('departureDate') || '';
+                this.returnDate = urlParams.get('returnDate') || '';
+
+                if (this.fromCity && this.toCity && this.departureDate) {
+                    this.searchTrips();
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

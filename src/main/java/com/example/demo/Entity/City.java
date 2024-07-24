@@ -1,6 +1,10 @@
 package com.example.demo.Entity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 public class City {
     @Id
@@ -10,33 +14,6 @@ public class City {
     @Column(nullable = false, unique = true)
     private String name;
 
-    // Getters and Setters
-    public City(String name) {
-        this.name = name;
-    }
 
-    public City() {
-
-    }
-
-    // Getter for id
-    public Long getId() {
-        return id;
-    }
-
-    // Setter for id
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    // Getter for name
-    public String getName() {
-        return name;
-    }
-
-    // Setter for name
-    public void setName(String name) {
-        this.name = name;
-    }
 }
 
