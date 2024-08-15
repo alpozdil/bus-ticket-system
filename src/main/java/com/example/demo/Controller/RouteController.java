@@ -23,7 +23,7 @@ public class RouteController {
         return routeService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public Route createRoute(@RequestBody Route route) {
         return routeService.save(route);
     }

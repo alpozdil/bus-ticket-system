@@ -7,20 +7,20 @@ import lombok.Setter;
 @Getter
 @Entity
 public class Route {
-    // Getters and Setters
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "start_city_id", nullable = false)
+    @JoinColumn(name = "start_city_id")
     private City startCity;
 
     @ManyToOne
-    @JoinColumn(name = "end_city_id", nullable = false)
+    @JoinColumn(name = "end_city_id")
     private City endCity;
 
-    @Column(nullable = false)
+    @Column()
     private Float distance;
 }
 

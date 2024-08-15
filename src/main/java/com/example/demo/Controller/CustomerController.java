@@ -23,7 +23,7 @@ public class CustomerController {
         return customerService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerService.save(customer);
     }

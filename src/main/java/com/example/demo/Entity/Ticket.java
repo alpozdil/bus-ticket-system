@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.security.Timestamp;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Setter
 @Getter
@@ -26,14 +27,29 @@ public class Ticket {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String pnr;
 
     @Column(nullable = false)
     private BigDecimal pricePaid;
 
     @Column(nullable = false)
-    private Timestamp booking_Time;
+
+    private LocalDateTime bookingTime;
+
+    @PrePersist
+    protected void onCreate() {
+        this.pnr = UUID.randomUUID().toString();
+        this.bookingTime = LocalDateTime.now();
+    }
+
+
+    public Ticket() {
+        this.pnr = UUID.randomUUID().toString();
+        this.bookingTime = LocalDateTime.now();
+
+    }
+
 
 
 }

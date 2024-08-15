@@ -22,7 +22,7 @@ public class CityController {
         return cityService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public City createCity(@RequestBody City city) {
         return cityService.save(city);
     }
