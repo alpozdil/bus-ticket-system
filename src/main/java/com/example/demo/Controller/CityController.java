@@ -9,6 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cities")
 public class CityController {
+
     @Autowired
     private CityService cityService;
 

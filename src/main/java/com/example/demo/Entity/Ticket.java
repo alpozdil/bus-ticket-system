@@ -1,14 +1,13 @@
 package com.example.demo.Entity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Setter
-@Getter
+@Data
 @Entity
 public class Ticket {
     @Id
