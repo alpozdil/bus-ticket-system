@@ -24,6 +24,11 @@ public class TripController {
         return tripService.findById(id);
     }
 
+    @GetMapping("/trips")
+    public List<Trip> getTripsByCities(@RequestParam String startCity, @RequestParam String endCity) {
+        return tripService.findTripsByCities(startCity, endCity);
+    }
+
     @PostMapping
     public Trip createTrip(@RequestBody Trip trip) {
         return tripService.save(trip);

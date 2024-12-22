@@ -38,15 +38,17 @@ public class Ticket {
 
     @PrePersist
     protected void onCreate() {
-        this.pnr = UUID.randomUUID().toString();
+        this.pnr = generatePNR();
         this.bookingTime = LocalDateTime.now();
     }
 
-
     public Ticket() {
-        this.pnr = UUID.randomUUID().toString();
+        this.pnr = generatePNR();
         this.bookingTime = LocalDateTime.now();
+    }
 
+    private String generatePNR() {
+        return UUID.randomUUID().toString().substring(0, 6);
     }
 
 

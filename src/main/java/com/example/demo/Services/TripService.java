@@ -30,6 +30,14 @@ public class TripService {
         return null;
     }
 
+    public TripService(TripRepository tripRepository) {
+        this.tripRepository = tripRepository;
+    }
+
+    public List<Trip> findTripsByCities(String startCity, String endCity) {
+        return tripRepository.findByStartCityAndEndCity(startCity, endCity);
+    }
+
     public void deleteById(Long id) {
         tripRepository.deleteById(id);
     }

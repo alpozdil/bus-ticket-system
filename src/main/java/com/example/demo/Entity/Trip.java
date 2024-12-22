@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -28,11 +29,7 @@ public class Trip {
     private Bus bus;
 
     @Column(nullable = false)
-    private Date departureTime;
+    private LocalDateTime departureTime;
 
-    @Column(nullable = false)
-    private Date arrivalTime;
-
-    @Column(nullable = false)
-    private Double price;
 }
+

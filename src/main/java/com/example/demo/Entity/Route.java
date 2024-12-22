@@ -22,5 +22,11 @@ public class Route {
 
     @Column()
     private Float distance;
+
+    @Column(nullable = false)
+    private String estimated_travel_time;
+
+    @Column(nullable = false)
+    private Double price;
 }
 

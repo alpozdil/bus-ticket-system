@@ -22,7 +22,6 @@ public class TicketController {
     public Ticket getTicketById(@PathVariable Long id) {
         return ticketService.findById(id);
     }
-
     @PostMapping
     public Ticket createTicket(@RequestBody Ticket ticket) {
         return ticketService.save(ticket);
